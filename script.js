@@ -58,7 +58,7 @@ const questions = [
     },
     {
         title: "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
-        correctAnswer: 1,
+        correctAnswer: 3,
         choices: [
             {
                 title: 'title'
