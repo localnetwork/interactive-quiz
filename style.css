@@ -91,3 +91,9 @@ h1 {
     text-align: center;
     color: var(--borderCheckbox);
 }
+
+@media (max-width: 575px) {
+    .choice-item {
+        max-width: 100%;
+    }
+}
