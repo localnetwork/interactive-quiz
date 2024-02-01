@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+:root {
+    --borderCheckbox: #78b13f; 
+}
+body {
+    margin: 0; 
+}
+h1 {
+    text-align: center;
+}
+.quiz-start {
+    text-align: center; 
+}
+.quiz-start .btn-start, .actions button {
+    padding: 15px 30px; 
+    text-align: center;
+    border: 0; 
+    background-color: var(--borderCheckbox);
+    color: #fff; 
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.actions {
+    display: flex;
+    gap: 15px;
+}
+.quiz-items {
+    overflow: hidden;
+    padding: 0 15px; 
+}
+.choices label {
+    background: #ddd;
+    padding: 15px 15px 15px 50px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all ease .3s;  
+    border-radius: 5px;
+}
+.choices label:hover {
+    background: #a6f2ff;
+    border-color: #a6f2ff; 
+    transition: all ease .3s; 
+}
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; 
+}
+.choice-item {
+    margin-bottom: 15px;
+    max-width: 50%;
+    width: 100%;
+    padding: 0 15px; 
+}
+.choices input {
+    display: none; 
+}
+.choices input:checked ~ label::after {
+    content: "";
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 16px;
+    width: 6px;
+    border-bottom: 2px solid var(--borderCheckbox);
+    border-right: 2px solid var(--borderCheckbox);
+    left: 22px;
+    top: 12px;
+    z-index: 2;
+    position: absolute;
+}
+.choices label::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid #333;
+    position: absolute;
+    left: 15px;
+    top: 13px;
+    z-index: 3;
+}
+
+.success-msg {
+    border: 2px solid var(--borderCheckbox);
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+    color: var(--borderCheckbox);
+}
