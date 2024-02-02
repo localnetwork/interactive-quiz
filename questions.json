@@ -1,0 +1,65 @@
+[
+  {
+    "title": "What does HTML stand for?",
+    "correctAnswer": 2,
+    "type": "choice",
+    "choices": [
+      {
+        "title": "Hyperlinks and Text Markup Language"
+      },
+      {
+        "title": "Home Tool Markup Language"
+      },
+      {
+        "title": "Hyper Text Markup Language"
+      }
+    ]
+  },
+  {
+    "title": "What is the capital city of the Philippines?",
+    "correctAnswer": "Manila",
+    "type": "write"
+  },
+  {
+    "title": "Who is making the Web standards?",
+    "correctAnswer": 1,
+    "choices": [
+      {
+        "title": "Mozilla"
+      },
+      {
+        "title": "The World Wide Web Consortium"
+      },
+      {
+        "title": "Google"
+      },
+      {
+        "title": "Microsoft"
+      }
+    ]
+  },
+  {
+    "title": "Inline elements are normally displayed without starting a new line.",
+    "correctAnswer": 0,
+    "choices": [
+      {
+        "title": "True"
+      },
+      {
+        "title": "False"
+      }
+    ]
+  },
+  {
+    "title": "Block elements are normally displayed without starting a new line.",
+    "correctAnswer": 1,
+    "choices": [
+      {
+        "title": "True"
+      },
+      {
+        "title": "False"
+      }
+    ]
+  }
+]
