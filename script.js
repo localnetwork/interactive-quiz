@@ -1,21 +1,3 @@
-const test1 = fetch(`./questions.json`);
-
-const test = async (e) => {
-  const questionsData = await fetch("./questions.json");
-  try {
-    const questionsResponse = await questionsData;
-
-    console.log(questionsResponse);
-  } catch (error) {
-    console.error("Error:", error);
-    throw error; // Re-throwing the error to propagate it further if needed
-  }
-};
-
-test();
-
-console.log(test);
-
 const questions = [
   {
     title: "What does HTML stand for?",
@@ -33,14 +15,11 @@ const questions = [
       },
     ],
   },
-  {
-    title: "What is the capital city of the Philippines?",
-    correctAnswer: "Manila",
-    type: "write",
-  },
+
   {
     title: "Who is making the Web standards?",
     correctAnswer: 1,
+    type: "choice",
     choices: [
       {
         title: "Mozilla",
@@ -57,9 +36,15 @@ const questions = [
     ],
   },
   {
+    title: "What is the first capital of the Philippines?",
+    correctAnswer: "Cebu",
+    type: "write",
+  },
+  {
     title:
       "Inline elements are normally displayed without starting a new line.",
     correctAnswer: 0,
+    type: "choice",
     choices: [
       {
         title: `True`,
@@ -72,6 +57,7 @@ const questions = [
   {
     title: "Block elements are normally displayed without starting a new line.",
     correctAnswer: 1,
+    type: "choice",
     choices: [
       {
         title: `True`,
@@ -82,6 +68,10 @@ const questions = [
     ],
   },
 ];
+
+const retake = (e) => {
+  progress(0);
+};
 
 const prevFnc = (e) => {
   progress(e);
@@ -136,54 +126,53 @@ const nextFnc = (e) => {
           icon: "error",
         });
       }
-      break;
     case "write":
-      correctAnswer =
-        typeof correctAnswer === "string" ? correctAnswer.toLowerCase() : "";
+      if (document.querySelector(".answer-input")) {
+        correctAnswer =
+          typeof correctAnswer === "string" ? correctAnswer.toLowerCase() : "";
 
-      let userAnswer = document.querySelector(".answer-input").value;
-      userAnswer = userAnswer.toLowerCase();
-      if (correctAnswer.includes(userAnswer)) {
-        progress(nextPage);
-
-        console.log(nextPage);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: "Your answer is correct!",
-        });
-      } else if (userAnswer == "") {
-        console.log("please enter your answer");
-        Swal.fire({
-          title: "Error!",
-          text: "Please provide your answer.",
-          icon: "error",
-        });
-      } else {
-        progress(0);
-        Swal.fire({
-          title: "Error!",
-          text: `Your answer is incorrect. ${
-            e !== 0
-              ? "You will restarted to the first question."
-              : "Please try again."
-          }`,
-          icon: "error",
-        });
+        let userAnswer = document.querySelector(".answer-input").value;
+        userAnswer = userAnswer.toLowerCase();
+        if (userAnswer.includes(correctAnswer)) {
+          progress(nextPage);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Your answer is correct!",
+          });
+        } else if (userAnswer == "") {
+          console.log("Please enter your answer");
+          Swal.fire({
+            title: "Error!",
+            text: "Please provide your answer.",
+            icon: "error",
+          });
+        } else {
+          progress(0);
+          Swal.fire({
+            title: "Error!",
+            text: `Your answer is incorrect. ${
+              e !== 0
+                ? "You will restarted to the first question."
+                : "Please try again."
+            }`,
+            icon: "error",
+          });
+        }
       }
-      break;
 
     default:
+      break;
   }
 };
 
@@ -248,6 +237,10 @@ const progress = (e) => {
     document.querySelector(".quiz-items").innerHTML = `
             <div class="success-msg">
                 <h2>You've successfully taken the test.</h2>
+
+                <div class="">
+                    Do you want to retake? <button class="btn-submit" onclick="retake()">Click here</button>
+                </div>
             </div>`;
   }
 };

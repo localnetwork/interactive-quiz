@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -6,14 +8,21 @@
 }
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+.main-wrapper {
+  padding: 0 15px;
 }
 h1 {
   text-align: center;
 }
 .quiz-start {
   text-align: center;
+  margin-top: 30px;
 }
+
 .quiz-start .btn-start,
+.btn-submit,
 .actions button {
   padding: 15px 30px;
   text-align: center;
@@ -24,13 +33,27 @@ h1 {
   font-weight: bold;
   border-radius: 5px;
 }
+.quiz-start .btn-start {
+  font-size: 25px;
+}
 .actions {
   display: flex;
   gap: 15px;
 }
-.quiz-items {
+.quiz-items:not(:empty) {
   overflow: hidden;
-  padding: 0 15px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.quiz-items h2 {
+  margin: 0 0 15px;
+}
+.quiz-items h2::first-letter {
+  font-size: 40px;
+  color: var(--borderCheckbox);
 }
 .choices label {
   background: #ddd;
@@ -60,6 +83,15 @@ h1 {
 }
 .choices input {
   display: none;
+}
+.answer-input {
+  border: 1px solid #ddd;
+  min-height: 50px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  min-width: 100%;
+  margin-bottom: 15px;
+  box-shadow: 0px 1px 3px #ccc;
 }
 .choices input:checked ~ label::after {
   content: "";
